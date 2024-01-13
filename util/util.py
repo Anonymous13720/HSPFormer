@@ -6,7 +6,7 @@ import importlib
 import torch
 import torch.nn as nn
 
-from models.build_ufs import *
+from models.build_dbs import *
 import torch.nn.functional as F
 from dataloader.Nyu_depthV2 import NYU_depth_V2_Dataset
 from dataloader.KITTI360 import KITTI360_Dataset
@@ -49,7 +49,7 @@ def build_model(train_opt, cfg):
     encoder = getattr(model_modellib, cfg["MODEL"]["model_spec"])
 
 
-    model = seg_network_ufs(encoder(), DecoderHead(in_channels=filters,num_classes=cfg["DATASET"]["num_labels"],norm_layer=nn.GroupNorm,embed_dim=filters[-1]), train_opt, cfg)
+    model = seg_network_dbs(encoder(), DecoderHead(in_channels=filters,num_classes=cfg["DATASET"]["num_labels"],norm_layer=nn.GroupNorm,embed_dim=filters[-1]), train_opt, cfg)
 
     return model
 
