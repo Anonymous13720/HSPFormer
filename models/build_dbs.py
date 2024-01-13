@@ -22,7 +22,7 @@ import torch.linalg as LA
 
 from util.color_name import *
 
-class seg_network_ufs(pl.LightningModule):
+class seg_network_dbs(pl.LightningModule):
     """Our RoadSeg takes rgb and another (depth or normal) as input,
     and outputs freespace predictions.
     """
